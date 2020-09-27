@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E60F0052520DBBA0011269E /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E60F0042520DBBA0011269E /* SearchBar.swift */; };
 		0E8B86C1251FE5D3004010BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8B86C0251FE5D3004010BC /* AppDelegate.swift */; };
 		0E8B86C3251FE5D3004010BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8B86C2251FE5D3004010BC /* SceneDelegate.swift */; };
 		0E8B86C5251FE5D3004010BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8B86C4251FE5D3004010BC /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E60F0042520DBBA0011269E /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		0E8B86BD251FE5D3004010BC /* SmartGas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartGas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E8B86C0251FE5D3004010BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E8B86C2251FE5D3004010BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				0E8B86C9251FE5D7004010BC /* Assets.xcassets */,
 				0E8B86CB251FE5D7004010BC /* LaunchScreen.storyboard */,
 				0E8B86CE251FE5D7004010BC /* Info.plist */,
+				0E60F0042520DBBA0011269E /* SearchBar.swift */,
 			);
 			path = SmartGas;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E8B86C5251FE5D3004010BC /* ViewController.swift in Sources */,
+				0E60F0052520DBBA0011269E /* SearchBar.swift in Sources */,
 				0E8B86C1251FE5D3004010BC /* AppDelegate.swift in Sources */,
 				0E8B86C3251FE5D3004010BC /* SceneDelegate.swift in Sources */,
 			);
