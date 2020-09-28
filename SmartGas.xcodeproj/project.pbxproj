@@ -24,6 +24,7 @@
 		0EA9832E252127660058E765 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA9832D252127660058E765 /* SearchView.swift */; };
 		0EA98337252127DD0058E765 /* StationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA98336252127DD0058E765 /* StationViewController.swift */; };
 		0EA9833E25212E790058E765 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA9833D25212E790058E765 /* NetworkService.swift */; };
+		0EA983432521DD9A0058E765 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA983422521DD9A0058E765 /* LocationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		0EA9832D252127660058E765 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		0EA98336252127DD0058E765 /* StationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewController.swift; sourceTree = "<group>"; };
 		0EA9833D25212E790058E765 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		0EA983422521DD9A0058E765 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				0EA9833D25212E790058E765 /* NetworkService.swift */,
+				0EA983422521DD9A0058E765 /* LocationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				0E8B86C1251FE5D3004010BC /* AppDelegate.swift in Sources */,
 				0EA98314252125B10058E765 /* GasStationViewController.swift in Sources */,
 				0E8B86C3251FE5D3004010BC /* SceneDelegate.swift in Sources */,
+				0EA983432521DD9A0058E765 /* LocationService.swift in Sources */,
 				0EA983242521268B0058E765 /* StationViewCellTableViewCell.swift in Sources */,
 				0EA9833E25212E790058E765 /* NetworkService.swift in Sources */,
 				0EA98307252124A30058E765 /* GasStationView.swift in Sources */,

@@ -8,13 +8,22 @@
 import UIKit
 
 class StationViewController: UIViewController {
-
+    
+    @IBOutlet weak var locationView: SearchView!
+    var locationService: LocationService?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        locationView.didTapSearch = { [weak self] in print("search tapped")
+            
+        }
         // Do any additional setup after loading the view.
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 
     /*
     // MARK: - Navigation

@@ -8,13 +8,15 @@
 import UIKit
 
 class GasStationViewController: UIViewController {
-    @IBOutlet weak var gasStationView: GasStationView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Do any additional setup after loading the view.
     }
+    
+
     
 
 

@@ -12,4 +12,6 @@ import UIKit
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var mapView: UILabel!
     
+    
+    
 }

@@ -9,7 +9,16 @@ import UIKit
 
 class SearchView: BaseView {
 
-    @IBOutlet weak var priceSearch: UISearchBar!
+    @IBOutlet weak var searchNearMe: UIButton!
     
+    var didTapSearch: (()->Void)?
+    
+    @IBAction func allowAction(_ sender:UIButton){
+        didTapSearch?()
+    }
+    
+    @IBAction func denyAction(_ sender:UIButton){
+        
+    }
 
 }
