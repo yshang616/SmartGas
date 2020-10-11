@@ -1,0 +1,6 @@
+framework module Pods_YellowPageTest_YellowPageTestUITests {
+  umbrella header "Pods-YellowPageTest-YellowPageTestUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
