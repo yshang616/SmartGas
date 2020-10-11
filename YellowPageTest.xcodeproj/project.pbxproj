@@ -17,6 +17,7 @@
 		0E2C79422531FCF3003671D1 /* YellowPageTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2C79412531FCF3003671D1 /* YellowPageTestUITests.swift */; };
 		0E2C79612531FE7A003671D1 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2C79602531FE7A003671D1 /* Station.swift */; };
 		0E2C79662531FF74003671D1 /* StationWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2C79652531FF74003671D1 /* StationWebViewController.swift */; };
+		0E2C796B253389FF003671D1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0E2C796A253389FF003671D1 /* .gitignore */; };
 		30A895BDF8F16EFC9AF82CFC /* Pods_YellowPageTest_YellowPageTestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4A5A78A6BAEB2D6FFED9C9 /* Pods_YellowPageTest_YellowPageTestUITests.framework */; };
 		9AB5F976FFD7F0D900988078 /* Pods_YellowPageTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91CC615CB004A9D21C80CBD8 /* Pods_YellowPageTest.framework */; };
 		EEC1F942C49700BFAC132F0B /* Pods_YellowPageTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E60D5BBB7D85FD03D597152 /* Pods_YellowPageTestTests.framework */; };
@@ -56,6 +57,7 @@
 		0E2C79432531FCF3003671D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E2C79602531FE7A003671D1 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		0E2C79652531FF74003671D1 /* StationWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationWebViewController.swift; sourceTree = "<group>"; };
+		0E2C796A253389FF003671D1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		2D4A5A78A6BAEB2D6FFED9C9 /* Pods_YellowPageTest_YellowPageTestUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YellowPageTest_YellowPageTestUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34187305AA47E6EE3B9BE9A3 /* Pods-YellowPageTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YellowPageTestTests.debug.xcconfig"; path = "Target Support Files/Pods-YellowPageTestTests/Pods-YellowPageTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		46C6192777BA64D629CE021E /* Pods-YellowPageTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YellowPageTest.debug.xcconfig"; path = "Target Support Files/Pods-YellowPageTest/Pods-YellowPageTest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				0E2C791F2531FCEF003671D1 /* AppDelegate.swift */,
 				0E2C79212531FCEF003671D1 /* SceneDelegate.swift */,
 				0E2C79232531FCEF003671D1 /* ViewController.swift */,
+				0E2C796A253389FF003671D1 /* .gitignore */,
 				0E2C79602531FE7A003671D1 /* Station.swift */,
 				0E2C79652531FF74003671D1 /* StationWebViewController.swift */,
 				0E2C79252531FCEF003671D1 /* Main.storyboard */,
@@ -282,6 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E2C796B253389FF003671D1 /* .gitignore in Resources */,
 				0E2C792C2531FCF2003671D1 /* LaunchScreen.storyboard in Resources */,
 				0E2C79292531FCF2003671D1 /* Assets.xcassets in Resources */,
 				0E2C79272531FCEF003671D1 /* Main.storyboard in Resources */,
