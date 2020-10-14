@@ -12,11 +12,16 @@ import Alamofire
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
+    var targetLocation: String = ""
     var html: String? = nil
+    
     var shows: [Station] = []
     
     let showConcertInfoSegueIdentifier = "ShowConcertInfoSegue"
     let textCellIdentifier = "ShowCell"
+//    let searchController = UISearchController(searchResultsController: ViewController())
+    var thumbNailImg = UIImage()
     
     @IBOutlet var metalShowTableView: UITableView!
     
@@ -30,6 +35,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -37,7 +44,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func scrapeNYCMetalScene() -> Void {
-        AF.request("https://www.yellowpages.com/sacramento-ca/gas-stations", method: .get).responseString { response in
+        AF.request("https://www.yellowpages.com/saintpaul-mn/gas-stations", method: .get).responseString { response in
             debugPrint(response)
             self.html = response.value
             self.parseHTML(html: response.value!)
@@ -62,23 +69,37 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let locality = show.parent?.parent?.nextSibling?.nextSibling?.at_css(" div.locality")?.text
                 let location = ("\(streetAddress!) \(locality!)")
                 
+//                let stationImg = show.parent?.parent?.parent?.previousSibling?.at_xpath("a/img")
+                
                 // Set values for gas prices info;
                 
                 let regularPrice = show.parent?.parent?.nextSibling?.nextSibling?.nextSibling?.at_xpath("div[1]/text()")?.text
                 
                 if regularPrice != nil {
-                    shows.append(Station(location: location, description: showString, venue: ("Regular Gas: \(regularPrice!)"), link: ""))
+                    
+                    
+                    let regularPriceNum = Int(regularPrice!.components(separatedBy:
+                                 CharacterSet.decimalDigits.inverted).joined(separator: ""))
+                    
+                    shows.append(Station(location: location, description: showString, venue: ("Regular Gas: \(regularPrice!)"), link: "", price: regularPriceNum!))
+                    
+//                    thumbNailImg = stationImg as! UIImage
+                    
+                    
                 } else {
-                    shows.append(Station(location: location, description: showString, venue: "N/A", link: ""))
+                    shows.append(Station(location: location, description: showString, venue: "N/A", link: "", price: 4000))
                 }
+                
                 
                 //                    }
                 //                }
             }
-            
+            shows=shows.sorted(by: {$0.price<$1.price
+            })
             
             self.metalShowTableView.reloadData()
             print(shows)
+            
         }
         
     }
@@ -89,13 +110,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath)
-        
         let row = indexPath.row
         let show = shows[row]
-        
-        cell.detailTextLabel?.text = show.location + "\n" + show.venue
-        cell.textLabel?.text = show.description
-        
+        cell.detailTextLabel?.text = show.description+"\n"+show.location
+//        cell.textLabel?.text = show.description
+        cell.textLabel?.text=show.venue
+//        cell.setValue(show.location, forKey: "keyPath")
+//        if thumbNailImg != nil {
+//            cell.imageView?.image = thumbNailImg
+//        }
         return cell
     }
 }

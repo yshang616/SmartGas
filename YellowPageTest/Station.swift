@@ -12,11 +12,13 @@ public struct Station {
     var description: String = ""
     var venue: String = ""
     var link: String = ""
+    var price: Int = 40
     
-    init(location: String, description: String, venue: String, link: String) {
+    init(location: String, description: String, venue: String, link: String, price: Int) {
         self.location = location
         self.description = description
         self.venue = venue
         self.link = link
+        self.price = price
     }
 }
