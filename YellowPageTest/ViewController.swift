@@ -10,10 +10,10 @@ import Kanna
 import Alamofire
 
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     
-    var targetLocation: String = ""
+//    var targetLocation: String = ""
     var html: String? = nil
     
     var shows: [Station] = []
@@ -22,15 +22,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let textCellIdentifier = "ShowCell"
 //    let searchController = UISearchController(searchResultsController: ViewController())
     var thumbNailImg = UIImage()
+    var targetLocation: String = ""
+    var requestURL = "https://www.yellowpages.com/saintpaul-mn/gas-stations"
+    
+  
+    
+    @IBOutlet weak var SearchBar: UISearchBar!
     
     @IBOutlet var metalShowTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
         metalShowTableView.delegate = self
         metalShowTableView.dataSource = self
+        SearchBar.delegate=self
         self.scrapeNYCMetalScene()
         
     }
@@ -44,12 +50,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func scrapeNYCMetalScene() -> Void {
-        AF.request("https://www.yellowpages.com/saintpaul-mn/gas-stations", method: .get).responseString { response in
+       
+        AF.request(requestURL, method: .get).responseString { response in
             debugPrint(response)
+            
             self.html = response.value
             self.parseHTML(html: response.value!)
-            
+
         }
+        
     }
     
     //    Parsing the HTML content into TableView content format
@@ -121,6 +130,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        }
         return cell
     }
+    
+    
+//    Search Bar Config
+
+    
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        targetLocation = searchText
+//        print(searchText)
+//    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        targetLocation = SearchBar.text!
+        requestURL = ("https://www.yellowpages.com/+\(targetLocation)+/gas-stations")
+        print(targetLocation)
+        print(requestURL)
+        scrapeNYCMetalScene()
+        self.metalShowTableView.reloadData()
+    }
+ 
 }
 
 
