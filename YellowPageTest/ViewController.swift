@@ -20,8 +20,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     let showConcertInfoSegueIdentifier = "ShowConcertInfoSegue"
     let textCellIdentifier = "ShowCell"
-//    let searchController = UISearchController(searchResultsController: ViewController())
-    var thumbNailImg = UIImage()
     var targetLocation: String = ""
     var requestURL = "https://www.yellowpages.com/saintpaul-mn/gas-stations"
     
