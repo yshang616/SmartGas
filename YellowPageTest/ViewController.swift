@@ -74,9 +74,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let streetAddress =
                     show.parent?.parent?.nextSibling?.nextSibling?.at_css("div.street-address")?.text
                 let locality = show.parent?.parent?.nextSibling?.nextSibling?.at_css(" div.locality")?.text
-                let location = ("\(streetAddress!) \(locality!)")
                 
-//                let stationImg = show.parent?.parent?.parent?.previousSibling?.at_xpath("a/img")
+                var location = "N/A"
+                
+                if (streetAddress != nil) && locality != nil{
+                    location = ("\(streetAddress!) \(locality!)")
+                }
+                
                 
                 // Set values for gas prices info;
                 
@@ -97,9 +101,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     shows.append(Station(location: location, description: showString, venue: "N/A", link: "", price: 4000))
                 }
                 
-                
-                //                    }
-                //                }
+
             }
             shows=shows.sorted(by: {$0.price<$1.price
             })
