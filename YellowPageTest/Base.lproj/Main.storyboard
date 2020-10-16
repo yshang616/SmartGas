@@ -42,12 +42,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18.840579710144929" y="57.589285714285708"/>
+            <point key="canvasLocation" x="54" y="479"/>
         </scene>
         <!--ShowConcertInfoSegue-->
         <scene sceneID="zmF-Z1-FaB">
             <objects>
-                <viewController title="ShowConcertInfoSegue" id="OQT-8N-lxO" customClass="ViewController" customModule="YellowPageTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ShowConcertInfoSegue" automaticallyAdjustsScrollViewInsets="NO" id="OQT-8N-lxO" customClass="ViewController" customModule="YellowPageTest" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bKK-vn-ppt"/>
                         <viewControllerLayoutGuide type="bottom" id="hkd-xB-Zvm"/>
@@ -60,7 +60,7 @@
                                 <rect key="frame" x="20" y="20" width="374" height="580"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search City, Town..." showsScopeBar="YES" id="TV1-IZ-xHQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="103"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="56"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <scopeButtonTitles>
@@ -121,7 +121,7 @@
                     <connections>
                         <outlet property="SearchBar" destination="TV1-IZ-xHQ" id="RMb-jS-AR6"/>
                         <outlet property="metalShowTableView" destination="bIz-Ig-zFe" id="fOV-b2-r7b"/>
-                        <segue destination="g5y-e3-3cz" kind="show" identifier="ShowConcertInfoSegue" id="c1h-Ho-itD"/>
+                        <segue destination="g5y-e3-3cz" kind="show" id="kdG-j3-Vl1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Bk-R9-tw2" sceneMemberID="firstResponder"/>
@@ -166,7 +166,7 @@
         <!--Navigation Controller-->
         <scene sceneID="zrB-B3-URe">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="M5C-7Q-t7p" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="M5C-7Q-t7p" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="3HH-2w-st2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3XR-JH-U8z">
@@ -175,6 +175,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vgn-kH-Wem">
+                        <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>

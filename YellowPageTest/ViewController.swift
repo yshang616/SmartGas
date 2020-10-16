@@ -120,12 +120,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let row = indexPath.row
         let show = shows[row]
         cell.detailTextLabel?.text = show.description+"\n"+show.location
-//        cell.textLabel?.text = show.description
         cell.textLabel?.text=show.venue
-//        cell.setValue(show.location, forKey: "keyPath")
-//        if thumbNailImg != nil {
-//            cell.imageView?.image = thumbNailImg
-//        }
+
         return cell
     }
     
@@ -140,6 +136,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         targetLocation = SearchBar.text!
+        targetLocation = targetLocation.replacingOccurrences(of: " ", with: "")
         requestURL = ("https://www.yellowpages.com/+\(targetLocation)+/gas-stations")
         print(targetLocation)
         print(requestURL)
