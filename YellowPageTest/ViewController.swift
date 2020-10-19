@@ -8,9 +8,25 @@
 import UIKit
 import Kanna
 import Alamofire
-
+import MapKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+    
+    //defining destination
+    @IBAction func directInMap(_ sender: Any) {
+        let latitude:CLLocationDegrees = 44.945746
+        let longitude:CLLocationDegrees = 93.107697
+        
+        let regionDistance:CLLocationDistance = 1000;
+        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+        
+        let regionSpan = MKCoordinateRegion(center: coordinates,latitudinalMeters: regionDistance,longitudinalMeters: regionDistance)
+        let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),MKLaunchOptionsMapSpanKey:NSValue(mkCoordinateSpan: regionSpan.span)]
+        let placemark = MKPlacemark(coordinate: coordinates)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = "gas station"
+        mapItem.openInMaps(launchOptions: options)
+    }
     
     
 //    var targetLocation: String = ""
