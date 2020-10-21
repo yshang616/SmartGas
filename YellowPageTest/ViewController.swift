@@ -31,11 +31,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        view.tintColor = UIColor(named: "SmartOrange")
+        navigationController?.navigationBar.barTintColor = UIColor(named: "SmartOrange")
         metalShowTableView.delegate = self
         metalShowTableView.dataSource = self
         SearchBar.delegate=self
         self.scrapeNYCMetalScene()
-        
+    
     }
     
     
