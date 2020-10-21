@@ -12,27 +12,10 @@ import MapKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
-    //defining destination
-    @IBAction func directInMap(_ sender: Any) {
-        let latitude:CLLocationDegrees = 44.945746
-        let longitude:CLLocationDegrees = 93.107697
-        
-        let regionDistance:CLLocationDistance = 1000;
-        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
-        
-        let regionSpan = MKCoordinateRegion(center: coordinates,latitudinalMeters: regionDistance,longitudinalMeters: regionDistance)
-        let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),MKLaunchOptionsMapSpanKey:NSValue(mkCoordinateSpan: regionSpan.span)]
-        let placemark = MKPlacemark(coordinate: coordinates)
-        let mapItem = MKMapItem(placemark: placemark)
-        mapItem.name = "gas station"
-        mapItem.openInMaps(launchOptions: options)
-    }
-    
-    
 //    var targetLocation: String = ""
     var html: String? = nil
-    
     var shows: [Station] = []
+    var stationAddress: String? = ""
     
     let showConcertInfoSegueIdentifier = "ShowConcertInfoSegue"
     let textCellIdentifier = "ShowCell"
@@ -160,6 +143,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         print(requestURL)
         scrapeNYCMetalScene()
         self.metalShowTableView.reloadData()
+    }
+    
+    //defining destination
+//    @IBAction func directInMap(_ sender: Any) {
+//        let latitude:CLLocationDegrees = 44.945746
+//        let longitude:CLLocationDegrees = 93.107697
+//        
+//        let regionDistance:CLLocationDistance = 1000;
+//        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+//        
+//        let regionSpan = MKCoordinateRegion(center: coordinates,latitudinalMeters: regionDistance,longitudinalMeters: regionDistance)
+//        let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),MKLaunchOptionsMapSpanKey:NSValue(mkCoordinateSpan: regionSpan.span)]
+//        let placemark = MKPlacemark(coordinate: coordinates)
+//        let mapItem = MKMapItem(placemark: placemark)
+//        mapItem.name = "gas station"
+//        mapItem.openInMaps(launchOptions: options)
+//    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let show = shows[indexPath.row]
+        DetailPageController().address = show.location
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.destination is DetailPageController
+        {
+            let show = shows[metalShowTableView.indexPathForSelectedRow!.row]
+            let vc = segue.destination as? DetailPageController
+            vc?.address = show.location
+            vc?.stationName = show.description
+        }
     }
  
 }

@@ -9,6 +9,8 @@ import UIKit
 
 class StationWebViewController: UIViewController {
     var url: String?
+    var shows: [Station] = []
+    var stationName: String = ""
     
     @IBOutlet var webView: UIWebView!
     
