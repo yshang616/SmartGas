@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (5.2.2)
   - Kanna (5.2.2)
+  - SkeletonView (1.10.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - Kanna (~> 5.2.2)
+  - SkeletonView
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Kanna
+    - SkeletonView
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   Kanna: 2c4eddaaa4bfb9a1ed19e53c0b3d42ef02838046
+  SkeletonView: 14fbe9702c7fb5c5f011b44ac3ae99fc73155726
 
-PODFILE CHECKSUM: 9f96e950e52d6780fe02984439817ae113189eb1
+PODFILE CHECKSUM: 8ee96f4364e096bb4b38d9301696dde650c1c1f9
 
 COCOAPODS: 1.9.3

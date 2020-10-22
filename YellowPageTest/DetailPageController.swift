@@ -17,8 +17,12 @@ class DetailPageController: UIViewController, CLLocationManagerDelegate {
     var latitude = 0.0
     var longitude = 0.0
     var locationManager = CLLocationManager()
+    var span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+    
+    
     @IBOutlet weak var DetailStationName: UILabel!
     @IBOutlet weak var DetailStationAddress: UILabel!
+    @IBOutlet weak var MapDisplay: MKMapView!
     
     @IBAction func DirectMapTapped(_ sender: Any) {
 //
@@ -52,10 +56,12 @@ class DetailPageController: UIViewController, CLLocationManagerDelegate {
             let lat = placemark?.location?.coordinate.latitude
             let lon = placemark?.location?.coordinate.longitude
             if (lat != nil) && (lon != nil){
-                print("Lat: \(lat!), Lon: \(lon!)")
                 self.latitude = lat!
                 self.longitude = lon!
             }
+            
+            let region = MKCoordinateRegion(center: CLLocationCoordinate2DMake(self.latitude,self.longitude), span: self.span)
+            self.MapDisplay.setRegion(region, animated: true)
             
         }
         

@@ -21,4 +21,6 @@ pod 'Kanna', '~> 5.2.2'
 
 pod 'Alamofire', '~> 5.2'
 
+pod 'SkeletonView'
+
 end

@@ -10,15 +10,13 @@ import Foundation
 public struct Station {
     var location: String = ""
     var description: String = ""
-    var venue: String = ""
-    var link: String = ""
-    var price: Int = 40
+    var regularPrice: String = ""
+    var regularPriceInt: Int = 0
     
-    init(location: String, description: String, venue: String, link: String, price: Int) {
+    init(location: String, description: String, regularPrice: String, regularPriceInt: Int) {
         self.location = location
         self.description = description
-        self.venue = venue
-        self.link = link
-        self.price = price
+        self.regularPrice = regularPrice
+        self.regularPriceInt = regularPriceInt
     }
 }

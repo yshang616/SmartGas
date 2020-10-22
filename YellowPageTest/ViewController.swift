@@ -9,53 +9,58 @@ import UIKit
 import Kanna
 import Alamofire
 import MapKit
+import SkeletonView
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class ViewController: UIViewController, UITableViewDelegate, SkeletonTableViewDataSource, UISearchBarDelegate {
     
-//    var targetLocation: String = ""
+    //    var targetLocation: String = ""
     var html: String? = nil
     var shows: [Station] = []
     var stationAddress: String? = ""
     
     let showConcertInfoSegueIdentifier = "ShowConcertInfoSegue"
-    let textCellIdentifier = "ShowCell"
+    let textCellIdentifier = "stationCell"
     var targetLocation: String = ""
     var requestURL = "https://www.yellowpages.com/saintpaul-mn/gas-stations"
     
-  
+    
     
     @IBOutlet weak var SearchBar: UISearchBar!
-    
-    @IBOutlet var metalShowTableView: UITableView!
+    @IBOutlet var stationTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view.tintColor = UIColor(named: "SmartOrange")
         navigationController?.navigationBar.barTintColor = UIColor(named: "SmartOrange")
-        metalShowTableView.delegate = self
-        metalShowTableView.dataSource = self
+        stationTableView.delegate = self
+        stationTableView.dataSource = self
         SearchBar.delegate=self
         self.scrapeNYCMetalScene()
-    
+        
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        stationTableView.isSkeletonable = true
+        
+    }
+    
     
     func scrapeNYCMetalScene() -> Void {
-       
+        
+        stationTableView.showAnimatedSkeleton()
+        
         AF.request(requestURL, method: .get).responseString { response in
             debugPrint(response)
             
             self.html = response.value
             self.parseHTML(html: response.value!)
-
         }
         
     }
@@ -82,36 +87,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     location = ("\(streetAddress!) \(locality!)")
                 }
                 
-                
                 // Set values for gas prices info;
-                
                 let regularPrice = show.parent?.parent?.nextSibling?.nextSibling?.nextSibling?.at_xpath("div[1]/text()")?.text
+    
                 
                 if regularPrice != nil {
-                    
-                    
                     let regularPriceNum = Int(regularPrice!.components(separatedBy:
-                                 CharacterSet.decimalDigits.inverted).joined(separator: ""))
+                                                                        CharacterSet.decimalDigits.inverted).joined(separator: ""))
                     
-                    shows.append(Station(location: location, description: showString, venue: ("Regular Gas: \(regularPrice!)"), link: "", price: regularPriceNum!))
-                    
-//                    thumbNailImg = stationImg as! UIImage
-                    
+                    shows.append(Station(location: location, description: showString, regularPrice: ("Regular Gas: \(regularPrice!)"), regularPriceInt: regularPriceNum!))
                     
                 } else {
-                    shows.append(Station(location: location, description: showString, venue: "N/A", link: "", price: 4000))
+                    shows.append(Station(location: location, description: showString, regularPrice: "N/A", regularPriceInt: 4000))
                 }
                 
-
             }
-            shows=shows.sorted(by: {$0.price<$1.price
-            })
+            shows=shows.sorted(by: {$0.regularPriceInt<$1.regularPriceInt})
             
-            self.metalShowTableView.reloadData()
-            print(shows)
+            self.stationTableView.reloadData()
+            self.stationTableView.stopSkeletonAnimation()
+            self.stationTableView.hideSkeleton()
+//            print(shows)
             
         }
-        
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return textCellIdentifier
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -123,19 +125,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let row = indexPath.row
         let show = shows[row]
         cell.detailTextLabel?.text = show.description+"\n"+show.location
-        cell.textLabel?.text=show.venue
-
+        cell.textLabel?.text=show.regularPrice
+        
         return cell
     }
     
-    
-//    Search Bar Config
-
-    
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        targetLocation = searchText
-//        print(searchText)
-//    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         targetLocation = SearchBar.text!
@@ -144,24 +138,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         print(targetLocation)
         print(requestURL)
         scrapeNYCMetalScene()
-        self.metalShowTableView.reloadData()
+        self.stationTableView.reloadData()
     }
     
-    //defining destination
-//    @IBAction func directInMap(_ sender: Any) {
-//        let latitude:CLLocationDegrees = 44.945746
-//        let longitude:CLLocationDegrees = 93.107697
-//        
-//        let regionDistance:CLLocationDistance = 1000;
-//        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
-//        
-//        let regionSpan = MKCoordinateRegion(center: coordinates,latitudinalMeters: regionDistance,longitudinalMeters: regionDistance)
-//        let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),MKLaunchOptionsMapSpanKey:NSValue(mkCoordinateSpan: regionSpan.span)]
-//        let placemark = MKPlacemark(coordinate: coordinates)
-//        let mapItem = MKMapItem(placemark: placemark)
-//        mapItem.name = "gas station"
-//        mapItem.openInMaps(launchOptions: options)
-//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let show = shows[indexPath.row]
@@ -169,16 +148,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        
         if segue.destination is DetailPageController
         {
-            let show = shows[metalShowTableView.indexPathForSelectedRow!.row]
+            let show = shows[stationTableView.indexPathForSelectedRow!.row]
             let vc = segue.destination as? DetailPageController
             vc?.address = show.location
             vc?.stationName = show.description
         }
     }
- 
+    
 }
 
 
