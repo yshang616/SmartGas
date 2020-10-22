@@ -61,7 +61,11 @@ class DetailPageController: UIViewController, CLLocationManagerDelegate {
             }
             
             let region = MKCoordinateRegion(center: CLLocationCoordinate2DMake(self.latitude,self.longitude), span: self.span)
+            let stationPointer = MKPointAnnotation()
+            stationPointer.title = self.stationName
             self.MapDisplay.setRegion(region, animated: true)
+            stationPointer.coordinate=CLLocationCoordinate2DMake(self.latitude,self.longitude)
+            self.MapDisplay.addAnnotation(stationPointer)
             
         }
         
