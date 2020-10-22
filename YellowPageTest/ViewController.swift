@@ -13,9 +13,8 @@ import SkeletonView
 
 class ViewController: UIViewController, UITableViewDelegate, SkeletonTableViewDataSource, UISearchBarDelegate {
     
-    //    var targetLocation: String = ""
     var html: String? = nil
-    var shows: [Station] = []
+    var stations: [Station] = []
     var stationAddress: String? = ""
     
     let showConcertInfoSegueIdentifier = "ShowConcertInfoSegue"
@@ -51,7 +50,7 @@ class ViewController: UIViewController, UITableViewDelegate, SkeletonTableViewDa
         
     }
     
-    
+//  The scraper function that sents a request to yellowpages and get a HTML content response
     func scrapeNYCMetalScene() -> Void {
         
         stationTableView.showAnimatedSkeleton()
@@ -65,49 +64,53 @@ class ViewController: UIViewController, UITableViewDelegate, SkeletonTableViewDa
         
     }
     
-    //    Parsing the HTML content into TableView content format
+//  Parsing the HTML content into TableView content format
     func parseHTML(html: String) -> Void {
         if let doc =  try? Kanna.HTML(html: html, encoding: String.Encoding.utf8){
-            shows = []
+            stations = []
             
-            // Search for nodes by XPath by a Loop
-            for show in doc.css("div > div > div > div.info > h2 > a > span") {
+            // Search for nodes by XPath via a loop;
+            for station in doc.css("div > div > div > div.info > h2 > a > span") {
                 
-                // Strip the string of surrounding whitespace.
-                let showString = show.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+                // Strip the string of surrounding whitespace;
+                let showString = station.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
                 
-                // Set values for LOCATION info; Combine street address with locality
+                // Set values for LOCATION info;
                 let streetAddress =
-                    show.parent?.parent?.nextSibling?.nextSibling?.at_css("div.street-address")?.text
-                let locality = show.parent?.parent?.nextSibling?.nextSibling?.at_css(" div.locality")?.text
+                    station.parent?.parent?.nextSibling?.nextSibling?.at_css("div.street-address")?.text
+                let locality = station.parent?.parent?.nextSibling?.nextSibling?.at_css(" div.locality")?.text
                 
                 var location = "N/A"
-                
+                // Combine street address with locality;
                 if (streetAddress != nil) && locality != nil{
                     location = ("\(streetAddress!) \(locality!)")
                 }
                 
-                // Set values for gas prices info;
-                let regularPrice = show.parent?.parent?.nextSibling?.nextSibling?.nextSibling?.at_xpath("div[1]/text()")?.text
+                // Set values for regular gas prices;
+                let regularPrice = station.parent?.parent?.nextSibling?.nextSibling?.nextSibling?.at_xpath("div[1]/text()")?.text
     
-                
+                // Turn Str regularPrice into Int to allow price comparison.
+                // Catch the nil errors with an if statement
                 if regularPrice != nil {
                     let regularPriceNum = Int(regularPrice!.components(separatedBy:
                                                                         CharacterSet.decimalDigits.inverted).joined(separator: ""))
                     
-                    shows.append(Station(location: location, description: showString, regularPrice: ("Regular Gas: \(regularPrice!)"), regularPriceInt: regularPriceNum!))
+                    stations.append(Station(location: location, description: showString, regularPrice: ("Regular Gas: \(regularPrice!)"), regularPriceInt: regularPriceNum!))
                     
+                // If there is no price information, set price to very large number so
+                // the gas station will be given less priority when sorting.
                 } else {
-                    shows.append(Station(location: location, description: showString, regularPrice: "N/A", regularPriceInt: 4000))
+                    stations.append(Station(location: location, description: showString, regularPrice: "N/A", regularPriceInt: 4000))
                 }
-                
             }
-            shows=shows.sorted(by: {$0.regularPriceInt<$1.regularPriceInt})
+            
+            //
+            
+            stations=stations.sorted(by: {$0.regularPriceInt<$1.regularPriceInt})
             
             self.stationTableView.reloadData()
             self.stationTableView.stopSkeletonAnimation()
             self.stationTableView.hideSkeleton()
-//            print(shows)
             
         }
     }
@@ -117,15 +120,15 @@ class ViewController: UIViewController, UITableViewDelegate, SkeletonTableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return shows.count
+        return stations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath)
         let row = indexPath.row
-        let show = shows[row]
-        cell.detailTextLabel?.text = show.description+"\n"+show.location
-        cell.textLabel?.text=show.regularPrice
+        let station = stations[row]
+        cell.detailTextLabel?.text = station.description+"\n"+station.location
+        cell.textLabel?.text=station.regularPrice
         
         return cell
     }
@@ -143,18 +146,18 @@ class ViewController: UIViewController, UITableViewDelegate, SkeletonTableViewDa
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let show = shows[indexPath.row]
-        DetailPageController().address = show.location
+        let station = stations[indexPath.row]
+        DetailPageController().address = station.location
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.destination is DetailPageController
         {
-            let show = shows[stationTableView.indexPathForSelectedRow!.row]
+            let station = stations[stationTableView.indexPathForSelectedRow!.row]
             let vc = segue.destination as? DetailPageController
-            vc?.address = show.location
-            vc?.stationName = show.description
+            vc?.address = station.location
+            vc?.stationName = station.description
         }
     }
     

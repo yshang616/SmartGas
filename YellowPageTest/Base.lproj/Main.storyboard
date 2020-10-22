@@ -8,42 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--SearchPageController-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController title="SearchPageController" id="BYZ-38-t0r" customClass="ViewController" customModule="YellowPageTest" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="SearchPageViewController">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Enter City, Town..." translatesAutoresizingMaskIntoConstraints="NO" id="9Mj-oK-JMS">
-                                <rect key="frame" x="26" y="414" width="323" height="56"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <scopeButtonTitles>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                </scopeButtonTitles>
-                            </searchBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Get the cheapest gas, today!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lbx-XZ-W4T">
-                                <rect key="frame" x="26" y="390" width="219" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" systemColor="systemOrangeColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <connections>
-                        <outlet property="GasPriceSearch" destination="9Mj-oK-JMS" id="i5j-yf-h0a"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="54" y="479"/>
-        </scene>
         <!--ShowConcertInfoSegue-->
         <scene sceneID="zmF-Z1-FaB">
             <objects>
@@ -148,67 +112,24 @@
                     <connections>
                         <outlet property="SearchBar" destination="TV1-IZ-xHQ" id="RMb-jS-AR6"/>
                         <outlet property="stationTableView" destination="bIz-Ig-zFe" id="29I-Gr-gaG"/>
-                        <segue destination="50K-QD-HRa" kind="show" identifier="" id="kdG-j3-Vl1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Bk-R9-tw2" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="844.92753623188412" y="512.94642857142856"/>
         </scene>
-        <!--Show Web View Controller-->
-        <scene sceneID="Nkz-mg-wBP">
-            <objects>
-                <viewController id="g5y-e3-3cz" customClass="ShowWebViewController" customModule="YellowPageTest" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="o3P-3z-Vkn"/>
-                        <viewControllerLayoutGuide type="bottom" id="nFq-vi-pnI"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Qr3-UG-OwP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fkp-be-B1o">
-                                <rect key="frame" x="16" y="88" width="343" height="641"/>
-                                <color key="backgroundColor" red="0.28958413" green="0.31462949509999999" blue="0.32950475810000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="v5f-jD-AWH"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="nFq-vi-pnI" firstAttribute="top" secondItem="fkp-be-B1o" secondAttribute="bottom" id="64b-Xj-w3S"/>
-                            <constraint firstItem="fkp-be-B1o" firstAttribute="leading" secondItem="Qr3-UG-OwP" secondAttribute="leadingMargin" id="C8Q-3E-WsA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="fkp-be-B1o" secondAttribute="trailing" id="LZf-DZ-A5N"/>
-                            <constraint firstItem="fkp-be-B1o" firstAttribute="top" secondItem="o3P-3z-Vkn" secondAttribute="bottom" id="Z3X-VW-5ch"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="UoM-II-Dis"/>
-                    <connections>
-                        <outlet property="webView" destination="fkp-be-B1o" id="POL-Mu-ztD"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="d7w-Rj-1KQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2496" y="66"/>
-        </scene>
         <!--Detail Page Controller-->
         <scene sceneID="uE2-q6-CeV">
             <objects>
                 <viewController id="jQN-Be-gba" customClass="DetailPageController" customModule="YellowPageTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Wp-2r-4q9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wt0-Zu-blg">
-                                <rect key="frame" x="61" y="42" width="235" height="59"/>
+                                <rect key="frame" x="61" y="42" width="314" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztM-Xd-JuS">
-                                <rect key="frame" x="61" y="109" width="281" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -231,6 +152,13 @@
                                     <action selector="DirectMapTapped:" destination="jQN-Be-gba" eventType="touchUpInside" id="18O-pV-OKE"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztM-Xd-JuS">
+                                <rect key="frame" x="61" y="132" width="281" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ojn-dK-VRm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -245,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OlI-Jj-ICj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2095.1999999999998" y="989.40886699507394"/>
+            <point key="canvasLocation" x="1685.5999999999999" y="512.807881773399"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zrB-B3-URe">
@@ -272,25 +200,6 @@
             <point key="canvasLocation" x="825" y="-206"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="Tvp-LK-mKO">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="50K-QD-HRa" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="or6-58-G0L"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zpz-fw-WDy">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="g5y-e3-3cz" kind="relationship" relationship="rootViewController" id="6IP-bd-zT0"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dLW-aA-i8i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1696" y="66"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="z4P-M1-Z6U">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ttu-B2-yBE" sceneMemberID="viewController">
@@ -306,11 +215,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5rq-h6-qQc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3490" y="832"/>
+            <point key="canvasLocation" x="1686" y="-206"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Jsu-B8-tR7"/>
+        <segue reference="fFm-vZ-0R4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
