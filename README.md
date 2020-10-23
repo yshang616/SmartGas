@@ -14,7 +14,7 @@ SmartGas was written in Swift using Xcode. We used CocoaPods to load AlamoFire (
 ### Xcode
 We created this project using Xcode 12.1, and it works with that version at the time of writing (12.1 is the most current version as of writing). To install the latest version of Xcode, simply install it from the App Store. To download a specific version, go to the Apple Developer website. For a tutorial on these two methods, follow this link: https://www.freecodecamp.org/news/how-to-download-and-install-xcode/
 ### YellowPagesScraper branch is the working branch
-The YellowPagesScraper branch on this repository contains the functioning app.  The main branch is outdated.  We understand that this goes against common practice, but we did not have enough time to figure out how to rename branches, and we felt that we shouldn't overwrite the main branch without further research.
+The YellowPagesScraper branch (the current default branch) on this repository contains the functioning app.  The main branch is outdated.  We understand that this goes against common practice, but we did not have enough time to figure out how to rename branches, and we felt that we shouldn't overwrite the main branch without further research.
 ## Known bugs and limitations
 Currently there are a number of known bugs and limitations in SmartGas:
 
