@@ -7,6 +7,9 @@
 
 import Foundation
 
+// a struct class for station that characterize the station object which
+// has information about location, name, gas price, and gas price in int type
+// for sorting purpose
 public struct Station {
     var location: String = ""
     var description: String = ""

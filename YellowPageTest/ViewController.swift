@@ -75,7 +75,7 @@ class ViewController: UIViewController, UITableViewDelegate, SkeletonTableViewDa
                 // Strip the string of surrounding whitespace;
                 let showString = station.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
                 
-                // Set values for LOCATION info;
+                // Set values for location info;
                 let streetAddress =
                     station.parent?.parent?.nextSibling?.nextSibling?.at_css("div.street-address")?.text
                 let locality = station.parent?.parent?.nextSibling?.nextSibling?.at_css(" div.locality")?.text
@@ -104,17 +104,18 @@ class ViewController: UIViewController, UITableViewDelegate, SkeletonTableViewDa
                 }
             }
             
-            //
-            
+
+            // Sort the station array from lowest to highest gas price
             stations=stations.sorted(by: {$0.regularPriceInt<$1.regularPriceInt})
             
+            // Reload the array into the table view and stop loading animation
             self.stationTableView.reloadData()
             self.stationTableView.stopSkeletonAnimation()
             self.stationTableView.hideSkeleton()
             
         }
     }
-    
+//    Setups for the tableview.
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
         return textCellIdentifier
     }
@@ -133,7 +134,8 @@ class ViewController: UIViewController, UITableViewDelegate, SkeletonTableViewDa
         return cell
     }
     
-    
+//  searchBarSearchButtonClicked is called when the user searches a word;
+//  It resets the requestURL by inserting the user input city and calls the scraper again.
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         targetLocation = SearchBar.text!
         targetLocation = targetLocation.replacingOccurrences(of: " ", with: "")
@@ -144,12 +146,8 @@ class ViewController: UIViewController, UITableViewDelegate, SkeletonTableViewDa
         self.stationTableView.reloadData()
     }
     
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let station = stations[indexPath.row]
-        DetailPageController().address = station.location
-        
-    }
+//    prepare function helps to pass the gas station related data to the detail page
+//    when the segue is activitated.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.destination is DetailPageController
