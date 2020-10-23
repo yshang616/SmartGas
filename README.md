@@ -3,10 +3,15 @@
 SmartGas is an iOS app that strives to provide quick, easy access to the cheapest gas nearby its users.  It's purpose is to provide car users quick and easy information about nearby gas stations and their prices, ultimately saving them time and money.
 ## Features
 SmartGas currently allows users to search their location for cheap gas, as well as locations of their choosing.  Once a desired location is selected, directions are provided via Apple Maps.
+
 ## Architecture
+
 <img width="1250" alt="Screen Shot 2020-10-23 at 1 43 16 AM" src="https://user-images.githubusercontent.com/38991941/96965142-47304c00-14d1-11eb-823f-dafefa2bad90.png">
+* d
 When a user provides a location to search, SmartGas provides an HTTP request to YellowPages.com and parces its HTML content for gas stations in the given area.  Results are then sorted by lowest to highest prices, and returned to the user. The address of the selected station is then converted to coordinates and given to MapKit, which allows users to view directions to the location in Apple Maps.
+
 ### Framework
+
 SmartGas was written in Swift using Xcode. We used CocoaPods to load AlamoFire (for HTML networking), Kanna (for HTML parsing), and Skeleton View (for the loading animation while scraping is occurring).
 ## Developer Guide
 ### Xcode
